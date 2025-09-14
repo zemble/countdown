@@ -70,6 +70,20 @@
         <div class="moodle-sidebar-demo">
             <iframe src="index.html?date=2025-10-10&time=17:00:00&timezone=Pacific/Auckland&title=Assignment%20Due&compact=true"></iframe>
         </div>
+        
+        <h3>Different Widths Test</h3>
+        
+        <!-- 250px width test -->
+        <div style="width: 250px; height: 160px; border: 2px solid #28a745; border-radius: 4px; position: relative; background: white; margin: 10px auto;">
+            <span style="position: absolute; top: -25px; left: 0; font-size: 12px; color: #666; font-weight: bold;">250px wide</span>
+            <iframe src="index.html?date=2025-10-10&time=17:00:00&timezone=Pacific/Auckland&title=Exam&compact=true" style="width: 100%; height: 100%; border: none;"></iframe>
+        </div>
+        
+        <!-- 350px width test -->
+        <div style="width: 350px; height: 160px; border: 2px solid #ffc107; border-radius: 4px; position: relative; background: white; margin: 10px auto;">
+            <span style="position: absolute; top: -25px; left: 0; font-size: 12px; color: #666; font-weight: bold;">350px wide</span>
+            <iframe src="index.html?date=2025-10-10&time=17:00:00&timezone=Pacific/Auckland&title=Assignment&compact=true" style="width: 100%; height: 100%; border: none;"></iframe>
+        </div>
     </div>
     
     <div class="demo-container">
@@ -80,10 +94,20 @@
             https://zemble.github.io/countdown/?date=2025-10-10&time=17:00:00&timezone=Pacific/Auckland&title=Assignment%20Due&compact=true
         </div>
         
-        <h3>Moodle iframe Code</h3>
+        <h3>Recommended Moodle iframe Code</h3>
         <div class="url-examples">
-&lt;iframe src="https://zemble.github.io/countdown/?date=2025-10-10&time=17:00:00&timezone=Pacific/Auckland&title=Assignment%20Due&compact=true" width="300" height="180" style="border:none;"&gt;&lt;/iframe&gt;
+&lt;div style="text-align: center; margin: 10px 0;"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;iframe src="https://zemble.github.io/countdown/?date=2025-10-10&amp;time=17:00:00&amp;timezone=Pacific/Auckland&amp;title=Assignment%20Due&amp;compact=true" width="100%" height="140" style="border:none; max-width: 100%;"&gt;&lt;/iframe&gt;<br>
+&lt;/div&gt;
         </div>
+        
+        <p><strong>Key changes for Moodle:</strong></p>
+        <ul>
+            <li>Use <code>width="100%"</code> instead of fixed pixels</li>
+            <li>Add <code>max-width: 100%;</code> to prevent overflow</li>
+            <li>Use <code>height="140"</code> for compact vertical space</li>
+            <li>Keep the <code>compact=true</code> parameter</li>
+        </ul>
         
         <h3>Other Examples</h3>
         <div class="url-examples">

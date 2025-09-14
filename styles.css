@@ -233,68 +233,106 @@ body.iframe-mode {
     gap: 8px;
 }
 
-/* Compact mode for narrow containers (300px width) */
-@media (max-width: 350px) {
+/* Compact mode for narrow containers (like Moodle sidebar) */
+@media (max-width: 520px) {
     body {
         padding: 5px;
         font-size: 14px;
     }
     
     .countdown-container {
-        gap: 8px;
+        gap: 6px;
     }
     
     .countdown-board {
         flex-direction: column;
-        gap: 12px;
-        padding: 12px;
-        border: 4px solid #444;
-        border-radius: 8px;
+        gap: 8px;
+        padding: 8px;
+        border: 3px solid #444;
+        border-radius: 6px;
         align-items: center;
-        max-width: 280px;
-        margin: 0 auto;
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        box-sizing: border-box;
     }
     
     .time-section {
         flex-direction: row;
         align-items: center;
-        gap: 8px;
+        gap: 6px;
         width: 100%;
         justify-content: space-between;
+        min-height: 36px;
     }
     
     .time-label {
-        min-width: 50px;
+        min-width: 42px;
         text-align: left;
-        font-size: 10px;
-        letter-spacing: 1px;
+        font-size: 9px;
+        letter-spacing: 0.5px;
         flex-shrink: 0;
     }
     
     .digit-container {
-        gap: 4px;
+        gap: 2px;
         flex-shrink: 0;
     }
     
     .single-digit {
-        width: 32px;
-        height: 42px;
-        border-radius: 4px;
+        width: 24px;
+        height: 32px;
+        border-radius: 3px;
         border: 1px solid #333;
     }
     
     .digit-display {
-        font-size: 20px;
+        font-size: 15px;
     }
     
     .colon-separator {
-        display: none; /* Hide colons in compact layout */
+        display: none;
     }
     
     .countdown-title {
-        font-size: 12px;
-        letter-spacing: 1px;
-        margin-bottom: 5px;
+        font-size: 10px;
+        letter-spacing: 0.5px;
+        margin-bottom: 3px;
+        text-align: center;
+        word-break: break-word;
+        line-height: 1.2;
+    }
+}
+
+/* Ultra compact for very narrow spaces (Moodle blocks) */
+@media (max-width: 300px) {
+    .countdown-board {
+        padding: 6px;
+        gap: 6px;
+        border: 2px solid #444;
+    }
+    
+    .time-section {
+        gap: 4px;
+        min-height: 30px;
+    }
+    
+    .time-label {
+        min-width: 35px;
+        font-size: 8px;
+    }
+    
+    .single-digit {
+        width: 20px;
+        height: 28px;
+    }
+    
+    .digit-display {
+        font-size: 13px;
+    }
+    
+    .countdown-title {
+        font-size: 9px;
     }
 }
 
@@ -329,62 +367,100 @@ body.iframe-mode {
     }
 }
 
-/* Moodle sidebar specific optimization */
-.iframe-mode.compact {
+/* Compact mode overrides (explicit compact=true parameter) */
+body.compact {
     padding: 3px;
 }
 
-.iframe-mode.compact .countdown-container {
-    gap: 5px;
+body.compact .countdown-container {
+    gap: 4px;
 }
 
-.iframe-mode.compact .countdown-board {
+body.compact .countdown-board {
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
     padding: 8px;
-    border: 3px solid #444;
-    border-radius: 6px;
-    max-width: 290px;
-    margin: 0 auto;
+    border: 2px solid #444;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-.iframe-mode.compact .time-section {
+body.compact .time-section {
     flex-direction: row;
     align-items: center;
-    gap: 6px;
+    gap: 4px;
     width: 100%;
     justify-content: space-between;
+    min-height: 30px;
 }
 
-.iframe-mode.compact .time-label {
-    min-width: 45px;
+body.compact .time-label {
+    min-width: 35px;
     text-align: left;
-    font-size: 9px;
-    letter-spacing: 0.5px;
+    font-size: 8px;
+    letter-spacing: 0.3px;
+    flex-shrink: 0;
 }
 
-.iframe-mode.compact .digit-container {
-    gap: 3px;
+body.compact .digit-container {
+    gap: 2px;
+    flex-shrink: 0;
 }
 
-.iframe-mode.compact .single-digit {
-    width: 26px;
-    height: 36px;
+body.compact .single-digit {
+    width: 20px;
+    height: 28px;
     border: 1px solid #333;
-    border-radius: 3px;
+    border-radius: 2px;
 }
 
-.iframe-mode.compact .digit-display {
-    font-size: 16px;
+body.compact .digit-display {
+    font-size: 13px;
 }
 
-.iframe-mode.compact .colon-separator {
+body.compact .colon-separator {
     display: none;
 }
 
-.iframe-mode.compact .countdown-title {
-    font-size: 10px;
-    letter-spacing: 0.5px;
-    margin-bottom: 3px;
+body.compact .countdown-title {
+    font-size: 9px;
+    letter-spacing: 0.3px;
+    margin-bottom: 2px;
+    line-height: 1.1;
+    text-align: center;
+    word-break: break-word;
+}
+
+/* Force horizontal layout for Moodle when space allows */
+@media (min-width: 280px) {
+    body.compact .countdown-board {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-end;
+        gap: 3px;
+        padding: 6px;
+    }
+    
+    body.compact .time-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 3px;
+        min-width: 60px;
+        min-height: auto;
+    }
+    
+    body.compact .time-label {
+        text-align: center;
+        min-width: auto;
+        order: 2;
+    }
+    
+    body.compact .digit-container {
+        order: 1;
+    }
 }
 
