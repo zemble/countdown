@@ -2,10 +2,11 @@
 // Full implementation with timezone support and flip animations
 
 class CountdownTimer {
-    constructor(targetDate, timezone = 'UTC', title = 'Countdown Timer') {
+    constructor(targetDate, timezone = 'UTC', title = 'Countdown Timer', compact = false) {
         this.targetDate = new Date(targetDate);
         this.timezone = timezone;
         this.title = title;
+        this.compact = compact;
         this.digits = {};
         this.previousValues = { days: 0, hours: 0, minutes: 0, seconds: 0 };
         this.isIframeMode = window.self !== window.top;
@@ -17,6 +18,11 @@ class CountdownTimer {
         // Apply iframe mode if detected
         if (this.isIframeMode) {
             document.body.classList.add('iframe-mode');
+        }
+        
+        // Apply compact mode if requested
+        if (this.compact) {
+            document.body.classList.add('compact');
         }
         
         // Set title
@@ -134,7 +140,8 @@ function getUrlParams() {
         time: params.get('time'),
         timezone: params.get('timezone') || params.get('tz') || 'UTC',
         title: params.get('title') || 'Countdown Timer',
-        theme: params.get('theme') || 'default'
+        theme: params.get('theme') || 'default',
+        compact: params.get('compact') === 'true' || params.get('compact') === '1'
     };
 }
 
@@ -201,14 +208,15 @@ document.addEventListener('DOMContentLoaded', () => {
     
     applyTheme(params.theme);
     
-    countdownTimer = new CountdownTimer(targetDate, params.timezone, params.title);
+    countdownTimer = new CountdownTimer(targetDate, params.timezone, params.title, params.compact);
     
     // Log configuration for debugging
     console.log('Countdown Timer initialized:', {
         targetDate: targetDate.toISOString(),
         timezone: params.timezone,
         title: params.title,
-        theme: params.theme
+        theme: params.theme,
+        compact: params.compact
     });
 });
 
