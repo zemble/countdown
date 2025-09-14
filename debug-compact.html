@@ -13,13 +13,13 @@
         .test-container {
             border: 2px solid red;
             width: 200px;
-            height: 220px;
+            height: 80px;
             margin: 20px auto;
             position: relative;
         }
         
         .test-container::before {
-            content: "200px × 220px Test";
+            content: "200px × 80px Test";
             position: absolute;
             top: -25px;
             left: 0;
@@ -50,8 +50,9 @@
         ✓ No title displayed<br>
         ✓ Horizontal layout (DAYS HOURS MINS SECS)<br>
         ✓ No colons<br>
-        ✓ Small digits (16px wide)<br>
-        ✓ Fits in 200px width
+        ✓ Taller digits (18px wide × 32px high) with 16px font<br>
+        ✓ Spreads across full 200px width<br>
+        ✓ Fits in 80px height
     </div>
     
     <div class="test-container">
