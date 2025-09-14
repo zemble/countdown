@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Large Countdown Timer Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .demo-container {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .large-timer-demo {
+            width: 100%;
+            height: 300px;
+            border: 2px solid #007acc;
+            border-radius: 4px;
+            position: relative;
+            background: white;
+            margin: 0 auto;
+        }
+        
+        .large-timer-demo::before {
+            content: "Large Mode (100% width × 300px high)";
+            position: absolute;
+            top: -25px;
+            left: 0;
+            font-size: 12px;
+            color: #666;
+            font-weight: bold;
+        }
+        
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 4px;
+        }
+        
+        h1, h2 {
+            color: #333;
+        }
+        
+        .url-examples {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 10px 0;
+            font-family: monospace;
+            font-size: 14px;
+            word-break: break-all;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .comparison-table th {
+            background: #f5f5f5;
+            font-weight: bold;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Large Countdown Timer Demo</h1>
+    <p>This page demonstrates the new <strong>large mode</strong> with 150px high digits and flip animations, perfect for center page display in Moodle.</p>
+    
+    <div class="demo-container">
+        <h2>Large Mode Preview</h2>
+        <div class="large-timer-demo">
+            <iframe src="index.html?date=2025-10-10&time=17:00:00&timezone=Pacific/Auckland&title=Assignment%20Deadline&large=true"></iframe>
+        </div>
+    </div>
+    
+    <div class="demo-container">
+        <h2>Features</h2>
+        <ul>
+            <li><strong>150px High Digits:</strong> Massive, highly visible countdown numbers</li>
+            <li><strong>Flip Animations:</strong> Smooth rolodex-style flip transitions when numbers change</li>
+            <li><strong>Full Width:</strong> Takes up 100% of the container width</li>
+            <li><strong>Airport Board Style:</strong> Premium look with gradients and shadows</li>
+            <li><strong>Large Colons:</strong> Visible separators between time units</li>
+            <li><strong>Glowing Labels:</strong> Enhanced typography with text shadows</li>
+        </ul>
+    </div>
+    
+    <div class="demo-container">
+        <h2>Mode Comparison</h2>
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Compact Mode</th>
+                    <th>Large Mode</th>
+                    <th>Default Mode</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Use Case</strong></td>
+                    <td>Moodle sidebar</td>
+                    <td>Moodle center page</td>
+                    <td>General embed</td>
+                </tr>
+                <tr>
+                    <td><strong>Digit Size</strong></td>
+                    <td>22px × 36px</td>
+                    <td>80px × 150px</td>
+                    <td>60px × 80px</td>
+                </tr>
+                <tr>
+                    <td><strong>Font Size</strong></td>
+                    <td>18px</td>
+                    <td>80px</td>
+                    <td>42px</td>
+                </tr>
+                <tr>
+                    <td><strong>Container Size</strong></td>
+                    <td>200px × 80px</td>
+                    <td>100% × 300px</td>
+                    <td>Variable</td>
+                </tr>
+                <tr>
+                    <td><strong>Animations</strong></td>
+                    <td>None</td>
+                    <td>Flip animations</td>
+                    <td>Simple transitions</td>
+                </tr>
+                <tr>
+                    <td><strong>Title Display</strong></td>
+                    <td>Hidden</td>
+                    <td>Shown</td>
+                    <td>Shown</td>
+                </tr>
+                <tr>
+                    <td><strong>Colons</strong></td>
+                    <td>Hidden</td>
+                    <td>Large (60px)</td>
+                    <td>Medium (48px)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="demo-container">
+        <h2>URL Examples</h2>
+        
+        <h3>Large Mode (Center Page)</h3>
+        <div class="url-examples">
+            https://zemble.github.io/countdown/?date=2025-10-10&time=17:00:00&timezone=Pacific/Auckland&title=Assignment%20Deadline&large=true
+        </div>
+        
+        <h3>Compact Mode (Sidebar)</h3>
+        <div class="url-examples">
+            https://zemble.github.io/countdown/?date=2025-10-10&time=17:00:00&timezone=Pacific/Auckland&title=Assignment%20Due&compact=true
+        </div>
+        
+        <h3>Default Mode</h3>
+        <div class="url-examples">
+            https://zemble.github.io/countdown/?date=2025-10-10&time=17:00:00&timezone=Pacific/Auckland&title=Assignment%20Due
+        </div>
+    </div>
+    
+    <div class="demo-container">
+        <h2>Moodle Integration</h2>
+        
+        <h3>Large Mode iframe Code (Center Page)</h3>
+        <div class="url-examples">
+&lt;div style="text-align: center; margin: 20px 0;"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;iframe src="https://zemble.github.io/countdown/?date=2025-10-10&amp;time=17:00:00&amp;timezone=Pacific/Auckland&amp;title=Assignment%20Deadline&amp;large=true" width="100%" height="300" style="border:none; max-width: 100%;"&gt;&lt;/iframe&gt;<br>
+&lt;/div&gt;
+        </div>
+        
+        <h3>Compact Mode iframe Code (Sidebar)</h3>
+        <div class="url-examples">
+&lt;div style="text-align: center; margin: 10px 0;"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;iframe src="https://zemble.github.io/countdown/?date=2025-10-10&amp;time=17:00:00&amp;timezone=Pacific/Auckland&amp;title=Assignment%20Due&amp;compact=true" width="100%" height="80" style="border:none; max-width: 100%;"&gt;&lt;/iframe&gt;<br>
+&lt;/div&gt;
+        </div>
+    </div>
+</body>
+</html>

@@ -2,11 +2,12 @@
 // Full implementation with timezone support and flip animations
 
 class CountdownTimer {
-    constructor(targetDate, timezone = 'UTC', title = 'Countdown Timer', compact = false) {
+    constructor(targetDate, timezone = 'UTC', title = 'Countdown Timer', compact = false, large = false) {
         this.targetDate = new Date(targetDate);
         this.timezone = timezone;
         this.title = title;
         this.compact = compact;
+        this.large = large;
         this.digits = {};
         this.previousValues = { days: 0, hours: 0, minutes: 0, seconds: 0 };
         this.isIframeMode = window.self !== window.top;
@@ -28,6 +29,15 @@ class CountdownTimer {
             console.log('DEBUG: body classes:', document.body.className);
         } else {
             console.log('DEBUG: compact mode NOT requested, this.compact =', this.compact);
+        }
+        
+        // Apply large mode if requested
+        if (this.large) {
+            document.body.classList.add('large');
+            console.log('DEBUG: large class added to body');
+            console.log('DEBUG: body classes:', document.body.className);
+        } else {
+            console.log('DEBUG: large mode NOT requested, this.large =', this.large);
         }
         
         // Set title
@@ -116,8 +126,23 @@ class CountdownTimer {
         
         if (currentValue === newValue) return;
         
-        // Simple update with smooth transition
-        digitDisplay.textContent = newValue;
+        // Add flip animation for large mode
+        if (this.large) {
+            digitElement.classList.add('flipping');
+            
+            // Update the number after half the animation
+            setTimeout(() => {
+                digitDisplay.textContent = newValue;
+            }, 300); // Half of the 0.6s animation
+            
+            // Remove the flipping class after animation completes
+            setTimeout(() => {
+                digitElement.classList.remove('flipping');
+            }, 600);
+        } else {
+            // Simple update for compact and normal modes
+            digitDisplay.textContent = newValue;
+        }
     }
     
     onCountdownComplete() {
@@ -146,7 +171,8 @@ function getUrlParams() {
         timezone: params.get('timezone') || params.get('tz') || 'UTC',
         title: params.get('title') || 'Countdown Timer',
         theme: params.get('theme') || 'default',
-        compact: params.get('compact') === 'true' || params.get('compact') === '1'
+        compact: params.get('compact') === 'true' || params.get('compact') === '1',
+        large: params.get('large') === 'true' || params.get('large') === '1'
     };
 }
 
@@ -218,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     applyTheme(params.theme);
     
-    countdownTimer = new CountdownTimer(targetDate, params.timezone, params.title, params.compact);
+    countdownTimer = new CountdownTimer(targetDate, params.timezone, params.title, params.compact, params.large);
     
     // Log configuration for debugging
     console.log('Countdown Timer initialized:', {
@@ -226,7 +252,8 @@ document.addEventListener('DOMContentLoaded', () => {
         timezone: params.timezone,
         title: params.title,
         theme: params.theme,
-        compact: params.compact
+        compact: params.compact,
+        large: params.large
     });
 });
 
