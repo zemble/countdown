@@ -369,98 +369,110 @@ body.iframe-mode {
 
 /* Compact mode overrides (explicit compact=true parameter) */
 body.compact {
-    padding: 3px;
+    padding: 5px;
+    font-family: 'Arial Narrow', 'Helvetica Condensed', 'Arial', sans-serif;
 }
 
 body.compact .countdown-container {
-    gap: 4px;
+    gap: 6px;
+    justify-content: center;
 }
 
+/* Hide title in compact mode since Moodle shows it in block header */
+body.compact .countdown-title {
+    display: none;
+}
+
+/* Horizontal compact layout */
 body.compact .countdown-board {
-    flex-direction: column;
-    gap: 6px;
-    padding: 8px;
+    flex-direction: row;
+    gap: 4px;
+    padding: 12px 8px;
     border: 2px solid #444;
-    border-radius: 4px;
+    border-radius: 6px;
     width: 100%;
     max-width: 100%;
     margin: 0;
     box-sizing: border-box;
+    justify-content: center;
+    align-items: flex-end;
+    flex-wrap: nowrap;
 }
 
 body.compact .time-section {
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     gap: 4px;
-    width: 100%;
-    justify-content: space-between;
-    min-height: 30px;
+    flex: 1;
+    min-width: 0;
+    max-width: 25%;
 }
 
 body.compact .time-label {
-    min-width: 35px;
-    text-align: left;
-    font-size: 8px;
-    letter-spacing: 0.3px;
-    flex-shrink: 0;
+    font-size: 9px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    text-align: center;
+    color: #ffffff;
+    text-transform: uppercase;
+    line-height: 1;
+    order: 2;
 }
 
 body.compact .digit-container {
-    gap: 2px;
-    flex-shrink: 0;
+    gap: 1px;
+    order: 1;
+    justify-content: center;
 }
 
 body.compact .single-digit {
-    width: 20px;
-    height: 28px;
+    width: 22px;
+    height: 32px;
     border: 1px solid #333;
-    border-radius: 2px;
+    border-radius: 3px;
 }
 
 body.compact .digit-display {
-    font-size: 13px;
+    font-size: 16px;
+    font-family: 'Arial Black', 'Helvetica Bold', sans-serif;
+    font-weight: 900;
 }
 
+/* Add small colons back for horizontal layout */
 body.compact .colon-separator {
-    display: none;
+    display: flex;
+    font-size: 20px;
+    font-weight: 900;
+    color: #ffffff;
+    align-items: center;
+    padding-bottom: 8px;
+    line-height: 1;
+    margin: 0 2px;
 }
 
-body.compact .countdown-title {
-    font-size: 9px;
-    letter-spacing: 0.3px;
-    margin-bottom: 2px;
-    line-height: 1.1;
-    text-align: center;
-    word-break: break-word;
-}
-
-/* Force horizontal layout for Moodle when space allows */
-@media (min-width: 280px) {
+/* Extra compact adjustments for very narrow spaces */
+@media (max-width: 280px) {
     body.compact .countdown-board {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: flex-end;
-        gap: 3px;
-        padding: 6px;
+        padding: 8px 4px;
+        gap: 2px;
     }
     
-    body.compact .time-section {
-        flex-direction: column;
-        align-items: center;
-        gap: 3px;
-        min-width: 60px;
-        min-height: auto;
+    body.compact .single-digit {
+        width: 18px;
+        height: 28px;
+    }
+    
+    body.compact .digit-display {
+        font-size: 14px;
     }
     
     body.compact .time-label {
-        text-align: center;
-        min-width: auto;
-        order: 2;
+        font-size: 8px;
     }
     
-    body.compact .digit-container {
-        order: 1;
+    body.compact .colon-separator {
+        font-size: 16px;
+        margin: 0 1px;
     }
 }
 
