@@ -18,11 +18,16 @@ class CountdownTimer {
         // Apply iframe mode if detected
         if (this.isIframeMode) {
             document.body.classList.add('iframe-mode');
+            console.log('DEBUG: iframe-mode class added');
         }
         
         // Apply compact mode if requested
         if (this.compact) {
             document.body.classList.add('compact');
+            console.log('DEBUG: compact class added to body');
+            console.log('DEBUG: body classes:', document.body.className);
+        } else {
+            console.log('DEBUG: compact mode NOT requested, this.compact =', this.compact);
         }
         
         // Set title
@@ -205,6 +210,11 @@ let countdownTimer;
 document.addEventListener('DOMContentLoaded', () => {
     const params = getUrlParams();
     const targetDate = parseTargetDate(params.date, params.time, params.timezone);
+    
+    // Debug URL parameters
+    console.log('DEBUG: Raw URL:', window.location.search);
+    console.log('DEBUG: Parsed params:', params);
+    console.log('DEBUG: compact parameter:', params.compact, typeof params.compact);
     
     applyTheme(params.theme);
     

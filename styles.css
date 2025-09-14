@@ -233,18 +233,18 @@ body.iframe-mode {
     gap: 8px;
 }
 
-/* Compact mode for narrow containers (like Moodle sidebar) */
+/* Responsive design for non-compact mode only */
 @media (max-width: 520px) {
-    body {
+    body:not(.compact) {
         padding: 5px;
         font-size: 14px;
     }
     
-    .countdown-container {
+    body:not(.compact) .countdown-container {
         gap: 6px;
     }
     
-    .countdown-board {
+    body:not(.compact) .countdown-board {
         flex-direction: column;
         gap: 8px;
         padding: 8px;
@@ -257,7 +257,7 @@ body.iframe-mode {
         box-sizing: border-box;
     }
     
-    .time-section {
+    body:not(.compact) .time-section {
         flex-direction: row;
         align-items: center;
         gap: 6px;
@@ -266,7 +266,7 @@ body.iframe-mode {
         min-height: 36px;
     }
     
-    .time-label {
+    body:not(.compact) .time-label {
         min-width: 42px;
         text-align: left;
         font-size: 9px;
@@ -274,96 +274,33 @@ body.iframe-mode {
         flex-shrink: 0;
     }
     
-    .digit-container {
+    body:not(.compact) .digit-container {
         gap: 2px;
         flex-shrink: 0;
     }
     
-    .single-digit {
+    body:not(.compact) .single-digit {
         width: 24px;
         height: 32px;
         border-radius: 3px;
         border: 1px solid #333;
     }
     
-    .digit-display {
+    body:not(.compact) .digit-display {
         font-size: 15px;
     }
     
-    .colon-separator {
+    body:not(.compact) .colon-separator {
         display: none;
     }
     
-    .countdown-title {
+    body:not(.compact) .countdown-title {
         font-size: 10px;
         letter-spacing: 0.5px;
         margin-bottom: 3px;
         text-align: center;
         word-break: break-word;
         line-height: 1.2;
-    }
-}
-
-/* Ultra compact for very narrow spaces (Moodle blocks) */
-@media (max-width: 300px) {
-    .countdown-board {
-        padding: 6px;
-        gap: 6px;
-        border: 2px solid #444;
-    }
-    
-    .time-section {
-        gap: 4px;
-        min-height: 30px;
-    }
-    
-    .time-label {
-        min-width: 35px;
-        font-size: 8px;
-    }
-    
-    .single-digit {
-        width: 20px;
-        height: 28px;
-    }
-    
-    .digit-display {
-        font-size: 13px;
-    }
-    
-    .countdown-title {
-        font-size: 9px;
-    }
-}
-
-/* Extra compact mode for very narrow containers */
-@media (max-width: 320px) {
-    .countdown-board {
-        padding: 8px;
-        gap: 8px;
-        max-width: 300px;
-    }
-    
-    .time-section {
-        gap: 6px;
-    }
-    
-    .time-label {
-        min-width: 45px;
-        font-size: 9px;
-    }
-    
-    .single-digit {
-        width: 28px;
-        height: 38px;
-    }
-    
-    .digit-display {
-        font-size: 18px;
-    }
-    
-    .countdown-title {
-        font-size: 11px;
     }
 }
 
