@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer Examples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .example {
+            background: white;
+            margin: 30px 0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .example h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .example p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        .iframe-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        iframe {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .code-block {
+            background: #f8f8f8;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+        .code-block code {
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Airport Board Countdown Timer - Examples</h1>
+    <p>This page demonstrates various configurations of the Airport Board Countdown Timer for embedding in websites and Moodle courses.</p>
+
+    <div class="example">
+        <h2>Example 1: Basic Countdown (Next New Year)</h2>
+        <p>Default countdown to next New Year's Day at midnight UTC.</p>
+        <div class="iframe-container">
+            <iframe src="index.html" width="800" height="300" frameborder="0"></iframe>
+        </div>
+        <div class="code-block">
+            <code>&lt;iframe src="https://yourusername.github.io/countdown/" width="800" height="300" frameborder="0"&gt;&lt;/iframe&gt;</code>
+        </div>
+    </div>
+
+    <div class="example">
+        <h2>Example 2: Custom Date and Title</h2>
+        <p>Countdown to a specific date with custom title.</p>
+        <div class="iframe-container">
+            <iframe src="index.html?date=2024-12-25&time=00:00:00&title=Christmas%20Day%20Countdown" width="800" height="300" frameborder="0"></iframe>
+        </div>
+        <div class="code-block">
+            <code>&lt;iframe src="https://yourusername.github.io/countdown/?date=2024-12-25&amp;time=00:00:00&amp;title=Christmas%20Day%20Countdown" width="800" height="300" frameborder="0"&gt;&lt;/iframe&gt;</code>
+        </div>
+    </div>
+
+    <div class="example">
+        <h2>Example 3: Course Deadline with Timezone</h2>
+        <p>Perfect for Moodle integration - shows a course deadline in Eastern Time.</p>
+        <div class="iframe-container">
+            <iframe src="index.html?date=2024-05-15&time=23:59:00&timezone=America/New_York&title=Final%20Project%20Due" width="800" height="300" frameborder="0"></iframe>
+        </div>
+        <div class="code-block">
+            <code>&lt;iframe src="https://yourusername.github.io/countdown/?date=2024-05-15&amp;time=23:59:00&amp;timezone=America/New_York&amp;title=Final%20Project%20Due" width="800" height="300" frameborder="0"&gt;&lt;/iframe&gt;</code>
+        </div>
+    </div>
+
+    <div class="example">
+        <h2>Example 4: Responsive Mobile View</h2>
+        <p>Smaller size perfect for mobile devices or sidebar widgets.</p>
+        <div class="iframe-container">
+            <iframe src="index.html?date=2024-07-04&time=18:00:00&timezone=America/Los_Angeles&title=Independence%20Day" width="400" height="350" frameborder="0"></iframe>
+        </div>
+        <div class="code-block">
+            <code>&lt;iframe src="https://yourusername.github.io/countdown/?date=2024-07-04&amp;time=18:00:00&amp;timezone=America/Los_Angeles&amp;title=Independence%20Day" width="400" height="350" frameborder="0"&gt;&lt;/iframe&gt;</code>
+        </div>
+    </div>
+
+    <div class="example">
+        <h2>Moodle Integration Code</h2>
+        <p>Copy this code into your Moodle HTML block, page, or label activity:</p>
+        <div class="code-block">
+            <code>&lt;div style="text-align: center; margin: 20px 0;"&gt;<br>
+  &lt;iframe src="https://yourusername.github.io/countdown/?date=2024-12-31&amp;time=23:59:59&amp;title=Course%20Deadline&amp;timezone=America/New_York"<br> 
+          width="100%"<br>
+          height="300"<br>
+          frameborder="0"<br>
+          style="max-width: 800px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"&gt;<br>
+  &lt;/iframe&gt;<br>
+&lt;/div&gt;</code>
+        </div>
+    </div>
+
+    <div class="example">
+        <h2>URL Parameter Reference</h2>
+        <div class="code-block">
+            <code>
+<strong>Available Parameters:</strong><br>
+• date=YYYY-MM-DD (target date)<br>
+• time=HH:MM:SS (target time, 24-hour format)<br>
+• timezone=TIMEZONE (e.g., America/New_York, Europe/London)<br>
+• title=YOUR_TITLE (URL encoded spaces as %20)<br>
+• theme=THEME_NAME (currently: default)<br><br>
+
+<strong>Example URL:</strong><br>
+https://yourusername.github.io/countdown/?date=2024-06-15&time=14:30:00&timezone=America/Chicago&title=Summer%20Event
+            </code>
+        </div>
+    </div>
+
+    <div class="example">
+        <h2>Common Timezones</h2>
+        <div class="code-block">
+            <code>
+<strong>US Timezones:</strong><br>
+• America/New_York (Eastern)<br>
+• America/Chicago (Central)<br>
+• America/Denver (Mountain)<br>
+• America/Los_Angeles (Pacific)<br><br>
+
+<strong>International:</strong><br>
+• Europe/London (GMT/BST)<br>
+• Europe/Paris (CET/CEST)<br>
+• Asia/Tokyo (JST)<br>
+• Australia/Sydney (AEST/AEDT)<br>
+• UTC (Coordinated Universal Time)
+            </code>
+        </div>
+    </div>
+
+</body>
+</html>
