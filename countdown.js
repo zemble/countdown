@@ -138,16 +138,36 @@ function getUrlParams() {
     };
 }
 
-// Parse date from various formats
+// Parse date from various formats with timezone support
 function parseTargetDate(dateStr, timeStr, timezone) {
     let targetDate;
     
     if (dateStr) {
-        // Try to parse the date string
-        if (timeStr) {
-            targetDate = new Date(`${dateStr} ${timeStr}`);
-        } else {
-            targetDate = new Date(dateStr);
+        // Parse the date components
+        const [year, month, day] = dateStr.split('-').map(Number);
+        const [hours = 0, minutes = 0, seconds = 0] = (timeStr || '00:00:00').split(':').map(Number);
+        
+        // Create the target date treating the input as being in the specified timezone
+        // We'll create a date object and then adjust for timezone
+        try {
+            // Method 1: Use a more direct approach
+            // Create the date as if it's in the target timezone
+            const tempDate = new Date(year, month - 1, day, hours, minutes, seconds);
+            
+            // Get what this date would be in the target timezone
+            const targetTzTime = new Date(tempDate.toLocaleString('sv-SE', { timeZone: timezone }));
+            
+            // Calculate the offset between local and target timezone at this time
+            const localTime = new Date(tempDate.toLocaleString('sv-SE'));
+            const offset = targetTzTime.getTime() - localTime.getTime();
+            
+            // Apply the offset to get the correct UTC time
+            targetDate = new Date(tempDate.getTime() - offset);
+            
+        } catch (error) {
+            console.warn('Timezone conversion failed, using UTC interpretation:', error);
+            // Fallback to treating input as UTC
+            targetDate = new Date(Date.UTC(year, month - 1, day, hours, minutes, seconds));
         }
     } else {
         // Default to New Year if no date provided
